@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+
+</head>
+<body>
+    <h1>All Our Pets!</h1>
+    <ul>
+        {% for pet in pets %}
+        <li>
+            <img class="img-thumbnail" style =" width: 200px; height: 200px;" src="{{pet.photo_url}}">
+            <p>
+                <a href="/{{ pet.id }}">{{ pet.name }}</a>            
+            {% if pet.available %}
+                <span class="style="color: green;">Available</span>
+            {% else %}
+                <span style="color: red;">Not Available</span>
+            {% endif %}
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <p><a class="btn btn-sm btn-dark" href="/add">Add Pet</a></p>
+</body>
+</html>
